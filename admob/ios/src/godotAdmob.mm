@@ -166,45 +166,19 @@ void GodotAdmob::resize() {
 }
 
 int GodotAdmob::getBannerWidth() {
-    if (![NSThread isMainThread]) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (!initialized) {
-                NSLog(@"GodotAdmob Module not initialized");
-                return 0;
-            }
-            return (uintptr_t)[banner getBannerWidth];
-        });
+    if (!initialized) {
+        NSLog(@"GodotAdmob Module not initialized");
+        return 0;
     }
-    else {
-        if (!initialized) {
-            NSLog(@"GodotAdmob Module not initialized");
-            return 0;
-        }
-        return (uintptr_t)[banner getBannerWidth];
-    } 
-
+    return (uintptr_t)[banner getBannerWidth];
 }
 
 int GodotAdmob::getBannerHeight() {
-    if (![NSThread isMainThread]) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (!initialized) {
-                NSLog(@"GodotAdmob Module not initialized");
-                return 0;
-            }
-            return (uintptr_t)[banner getBannerHeight];
-        });
+    if (!initialized) {
+        NSLog(@"GodotAdmob Module not initialized");
+        return 0;
     }
-    else {
-        if (!initialized) {
-            NSLog(@"GodotAdmob Module not initialized");
-            return 0;
-        }
-        return (uintptr_t)[banner getBannerHeight];
-    } 
-
-
-
+    return (uintptr_t)[banner getBannerHeight];
 }
 
 void GodotAdmob::loadInterstitial(const String &interstitialId) {
