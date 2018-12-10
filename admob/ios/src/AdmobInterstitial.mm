@@ -1,6 +1,3 @@
-#import <Foundation/Foundation.h>
-#import <dispatch/dispatch.h>
-
 #import "AdmobInterstitial.h"
 #include "reference.h"
 
@@ -42,16 +39,7 @@
     
     //load
     GADRequest *request = [GADRequest request];
-
-    if (![NSThread isMainThread]) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [interstitial loadRequest:request];
-        });
-    }
-    else {
-        [interstitial loadRequest:request];
-    }   
-
+    [interstitial loadRequest:request];
 }
 
 - (void) showInterstitial {

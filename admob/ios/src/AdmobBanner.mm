@@ -1,6 +1,3 @@
-#import <Foundation/Foundation.h>
-#import <dispatch/dispatch.h>
-
 #import "AdmobBanner.h"
 #include "reference.h"
 
@@ -54,15 +51,7 @@
     }
     
     GADRequest *request = [GADRequest request];
-
-    if (![NSThread isMainThread]) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [bannerView loadRequest:request];
-        });
-    }
-    else {
-        [bannerView loadRequest:request];
-    }    
+    [bannerView loadRequest:request];
     
 }
 

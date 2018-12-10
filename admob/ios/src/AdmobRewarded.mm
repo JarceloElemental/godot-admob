@@ -1,6 +1,3 @@
-#import <Foundation/Foundation.h>
-#import <dispatch/dispatch.h>
-
 #import "AdmobRewarded.h"
 #import <GoogleMobileAds/GADRewardBasedVideoAd.h>
 #import <GoogleMobileAds/GADAdReward.h>
@@ -25,26 +22,11 @@
     }
     
     if(!isReal) {
-        if (![NSThread isMainThread]) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[GADRewardBasedVideoAd sharedInstance] loadRequest:[GADRequest request]
-                                                    withAdUnitID:@"ca-app-pub-3940256099942544/1712485313"];
-            });
-        }
-        else {
-            [[GADRewardBasedVideoAd sharedInstance] loadRequest:[GADRequest request]
-                                                withAdUnitID:@"ca-app-pub-3940256099942544/1712485313"];
-        } 
+        [[GADRewardBasedVideoAd sharedInstance] loadRequest:[GADRequest request]
+                                               withAdUnitID:@"ca-app-pub-3940256099942544/1712485313"];
     }
     else {
-        if (![NSThread isMainThread]) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[GADRewardBasedVideoAd sharedInstance] loadRequest:[GADRequest request] withAdUnitID:rewardedId];
-            });
-        }
-        else {
-            [[GADRewardBasedVideoAd sharedInstance] loadRequest:[GADRequest request] withAdUnitID:rewardedId];
-        } 
+        [[GADRewardBasedVideoAd sharedInstance] loadRequest:[GADRequest request] withAdUnitID:rewardedId];
     }
     
     
